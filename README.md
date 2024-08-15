@@ -1,2 +1,2 @@
-# 5-3-2
+# 350
 Classic and Simple Card Game
