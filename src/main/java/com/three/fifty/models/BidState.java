@@ -2,6 +2,7 @@ package com.three.fifty.models;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,13 +27,16 @@ public class BidState {
         return instance;
     }
 
+    public void reset(){
+        instance = new BidState();
+    }
+
     private BidState(){
         // Perform initialization if necessary
-        if (id == 0) {
-            setId(1);
-            setCurrentPlayerId(0);
-            setFirstPlayerId(0);
-            setCurrentBid(250);
-        }
+        setId(1);
+        setCurrentPlayerId(0);
+        setFirstPlayerId(0);
+        setCurrentBid(250);
+        setDroppedOutPlayers(new ArrayList<>());
     }
 }

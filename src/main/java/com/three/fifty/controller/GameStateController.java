@@ -8,6 +8,8 @@ import com.three.fifty.models.PlayRequest;
 import com.three.fifty.models.TableCard;
 import com.three.fifty.service.AfterHand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,8 +21,10 @@ public class GameStateController {
 
     // Exception Handler method added in CustomerController to handle CustomerAlreadyExistsException
     @ExceptionHandler(value = CardException.class)
-    public ErrorResponse handleCustomerAlreadyExistsException(CardException ex) {
-        return new ErrorResponse(ex.getStatusCode(), ex.getMsg());
+    public ResponseEntity<ErrorResponse> handle(CardException ex) {
+        ErrorResponse errorResponse = new ErrorResponse(ex.getStatusCode(), ex.getMsg());
+        HttpStatus status = HttpStatus.valueOf(ex.getStatusCode()); // Convert status code to HttpStatus
+        return new ResponseEntity<>(errorResponse, status);
     }
 
     @GetMapping("/gamestate")

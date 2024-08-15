@@ -58,7 +58,6 @@ class GameApplicationTests {
 							.content(objectMapper.writeValueAsString(playRequest)))
 					.andExpect(status().isOk());
 		}
-
 		mockMvc.perform(get("/gamestate"))
 				.andExpect(status().isOk())
 				.andExpect(MockMvcResultMatchers.jsonPath("$.players").isArray())
@@ -66,5 +65,4 @@ class GameApplicationTests {
 				.andExpect(MockMvcResultMatchers.jsonPath("$.currentPlayerId").isNumber());
 
 	}
-
 }

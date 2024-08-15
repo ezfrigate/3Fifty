@@ -36,7 +36,7 @@ public class GameState {
             setId(1);
             setPlayers(createPlayers()); // You need to implement createPlayers() method
             setTrumpOn(false);
-            setTrump(Suit.SPADES);
+            setTrump(null);
             setCurrentPlayerId(0);
             setThisHand(new ArrayList<>());
         }
